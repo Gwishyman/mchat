@@ -1,1 +1,31 @@
-...
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Profile - MChat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Your Profile</h2>
+    <input id="newDisplay" placeholder="New Display Name">
+    <button onclick="updateProfile()">Update</button>
+  </div>
+  <script src="firebase.js" type="module"></script>
+  <script type="module">
+    import { auth, db } from './firebase.js';
+    import { doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    onAuthStateChanged(auth, user => {
+      if (!user) location.href = 'login.html';
+    });
+
+    window.updateProfile = () => {
+      const newName = document.getElementById('newDisplay').value;
+      updateDoc(doc(db, 'users', auth.currentUser.uid), {
+        displayName: newName
+      }).then(() => alert('Updated!'));
+    }
+  </script>
+</body>
+</html>

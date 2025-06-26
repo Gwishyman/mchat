@@ -1,1 +1,33 @@
-...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MChat</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <div id="profile">
+        <img id="userPfp" src="" alt="pfp" />
+        <span id="userDisplay"></span>
+      </div>
+      <div id="channels"></div>
+      <input id="newChannelInput" placeholder="New channel name" />
+      <button onclick="createChannel()">+</button>
+    </div>
+
+    <div id="chatArea">
+      <div id="channelName">Select a channel</div>
+      <div id="messages"></div>
+      <div id="inputArea">
+        <textarea id="messageInput" placeholder="Type a message..."></textarea>
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+  <script src="firebase.js" type="module"></script>
+  <script src="script.js" type="module"></script>
+</body>
+</html>

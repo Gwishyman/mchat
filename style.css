@@ -1,1 +1,88 @@
-...
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #2c2f33;
+  color: #fff;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+}
+
+#sidebar {
+  width: 250px;
+  background: #23272a;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#channels {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+#chatArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #36393f;
+}
+
+#channelName {
+  padding: 10px;
+  background: #202225;
+  font-weight: bold;
+}
+
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+#inputArea {
+  display: flex;
+  padding: 10px;
+  background: #2f3136;
+}
+
+#inputArea textarea {
+  flex: 1;
+  resize: none;
+  background: #40444b;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #23272a;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.auth-container input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #2c2f33;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.auth-container button {
+  padding: 10px 20px;
+  background: #7289da;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}

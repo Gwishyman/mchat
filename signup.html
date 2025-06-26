@@ -1,1 +1,41 @@
-...
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up - MChat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Sign Up</h2>
+    <input id="username" placeholder="Username">
+    <input id="displayName" placeholder="Display Name">
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <p>Have an account? <a href="login.html">Login</a></p>
+  </div>
+  <script src="firebase.js" type="module"></script>
+  <script type="module">
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { auth, db } from './firebase.js';
+
+    window.signup = () => {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      const usernameVal = document.getElementById('username').value;
+      const displayVal = document.getElementById('displayName').value;
+      createUserWithEmailAndPassword(auth, email, pass)
+        .then(cred => {
+          return setDoc(doc(db, 'users', cred.user.uid), {
+            username: usernameVal,
+            displayName: displayVal,
+            photoURL: ''
+          });
+        })
+        .then(() => location.href = 'index.html')
+        .catch(e => alert(e.message));
+    }
+  </script>
+</body>
+</html>

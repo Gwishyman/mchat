@@ -21,7 +21,7 @@ onAuthStateChanged(auth, async user => {
   if (!user) return location.href = 'login.html';
   const userDoc = await getDoc(doc(db, 'users', user.uid));
   const data = userDoc.data();
-  document.getElementById('userPfp').src = data.photoURL || 'https://via.placeholder.com/40';
+  document.getElementById('userPfp').src = data.photoURL || 'depfp.png';
   document.getElementById('userDisplay').innerText = data.displayName;
   document.getElementById('userPfp').onclick = () => location.href = 'profile.html';
   loadChannels();
